@@ -6,10 +6,13 @@ import {
   productDetailsReducer,
 } from "./reducers/productReducers";
 
+import { cartReducer } from "./reducers/cartReducers";
+
 // thunk allows us to make async calls in action creators
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  cart: cartReducer,
 });
 
 const intialState = {};
