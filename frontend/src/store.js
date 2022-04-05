@@ -8,15 +8,21 @@ import {
 
 import { cartReducer } from "./reducers/cartReducers";
 
-// thunk allows us to make async calls in action creators
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
 });
 
-const intialState = {};
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
 
+const intialState = {
+  cart: { cartItems: cartItemsFromStorage },
+};
+
+// thunk allows us to make async calls in action creators
 const middleware = [thunk];
 
 const store = createStore(
